@@ -30,6 +30,7 @@ public class BoardServlet extends HttpServlet {
     	switch(act) {
     	case "list": list(request, response); break;
     	case "detail" : detail(request, response); break;
+    	case "writeForm" : writeForm(request, response); break;
     	}
     	
 	}
@@ -42,9 +43,13 @@ public class BoardServlet extends HttpServlet {
     
     public void detail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	Board board = dao.findByNo(Integer.parseInt(request.getParameter("no")));
+    	board.setViewCnt(board.getViewCnt()+1);
     	request.setAttribute("board", board);
-    	
     	RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/detail.jsp");
     	rd.forward(request, response);
     }
+    
+    public void writeForm(HttpServletRequest request, HttpServletResponse response) {
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/write.jsp");
+	}
 }

@@ -14,10 +14,23 @@ List<Board> boards = dao.selectBoard();
 <head>
 <meta charset="UTF-8">
 <title>목록</title>
+<style type="text/css">
+	.board {
+		
+		width : 50%;
+		border-collapse: collapse;
+	}
+	
+	th, td {
+		padding : 10px;
+		text-align: center;
+		vertical-aligh: middle;
+	}
+</style>
 </head>
 <body>
 	<h2>자유게시판</h2>
-	<table>
+	<table class="board">
 		<tr>
 			<th>번호</th>
 			<th>제목</th>
@@ -38,5 +51,7 @@ List<Board> boards = dao.selectBoard();
 		}
 		%>
 	</table>
+	
+	<a href="/Board-PRJ/board?act=writeForm">게시글 작성</a>
 </body>
 </html>

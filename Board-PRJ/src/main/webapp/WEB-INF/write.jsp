@@ -1,0 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>게시글 작성</title>
+<style type="text/css">
+ .
+
+</style>
+</head>
+
+<body>
+	<form action="/Board-PRJ/board">
+		<div>
+			<input type="hidden" name="act" value="write" >
+			<input type="text" id="title" name="title" placeholder="제목을 입력하세요">
+			<input type="text" id="content" name="content" placeholder="내용을 입력하세요">
+		</div>
+		<button type="submit">게시하기</button>
+	</form>
+		
+	
+</body>
+</html>
