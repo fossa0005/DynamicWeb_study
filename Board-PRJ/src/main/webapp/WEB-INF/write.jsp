@@ -12,7 +12,7 @@
 </head>
 
 <body>
-	<form action="/Board-PRJ/board">
+	<form action="/Board-PRJ/board?act=write">
 		<div>
 			<input type="hidden" name="act" value="write" >
 			<input type="text" id="title" name="title" placeholder="제목을 입력하세요">

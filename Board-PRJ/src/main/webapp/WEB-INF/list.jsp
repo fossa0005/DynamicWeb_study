@@ -13,7 +13,7 @@ List<Board> boards = dao.selectBoard();
 <html>
 <head>
 <meta charset="UTF-8">
-<title>목록</title>
+<title>자유게시판</title>
 <style type="text/css">
 	.board {
 		
@@ -52,6 +52,7 @@ List<Board> boards = dao.selectBoard();
 		%>
 	</table>
 	
-	<a href="/Board-PRJ/board?act=writeForm">게시글 작성</a>
+	<a href= "<%=request.getContextPath() %>/board?act=writeForm">게시글 작성</a>
+	<a href="${pageContext.request.contextPath}/login?act=logout" style="color : gray">로그아웃</a>
 </body>
 </html>

@@ -13,6 +13,14 @@ public class BoardDao {
 	}
 	
 	
+	public static int getNo() {
+		return no;
+	}
+
+	public static void setNo(int no) {
+		BoardDao.no = no;
+	}
+
 	public List<Board> selectBoard() {
 		return boards;
 	}
@@ -24,6 +32,11 @@ public class BoardDao {
 			}
 		}
 		return null;
+	}
+	
+	public void postBoard(Board board) {
+		board.setNo(++no);
+		boards.add(board);
 	}
 
 }

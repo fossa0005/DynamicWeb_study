@@ -26,14 +26,21 @@ public class LoginServlet extends HttpServlet {
     	String act = request.getParameter("act");
     	
     	switch(act) {
-    	case "loginForm" : loginForm(request, response); break;
-    	case "logout" : logout(request, response); break;
+    	case "loginForm" : loginForm(request, response); break; //로그인화면
+    	case "login" : login(request, response); break; //로그인 검사
+    	case "logout" : logout(request, response); break; //로그아웃
     	}
     	
     }
+    
+    //로그인 화면
+    private void loginForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/login/login.jsp");
+    	rd.forward(request, response);
+    }
  
     
-    //로그인 검증
+    //로그인 검사
     private void login(HttpServletRequest request, HttpServletResponse response) throws IOException {
     	//jsp에서 전달받은 id pw입력값을 login객체로 만듦
     	String id = request.getParameter("id");
@@ -53,7 +60,7 @@ public class LoginServlet extends HttpServlet {
     	//성공
     	} else { 
     		HttpSession session = request.getSession();
-    		session.setAttribute("login", login);
+    		session.setAttribute("login", login); //세션에 로그인객체 저장
     		//request.setAttribute("login", login); //한 요청에서만 유지되므로 리다이렉트에서는 유지안됨 
     		response.sendRedirect(request.getContextPath() + "/main");
     	}
@@ -67,9 +74,5 @@ public class LoginServlet extends HttpServlet {
     	
     }
     
-    //로그인, 회원가입
-    private void loginForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/login");
-    	rd.forward(request, response);
-    }
+    
 }

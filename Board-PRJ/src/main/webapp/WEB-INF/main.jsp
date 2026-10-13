@@ -21,7 +21,7 @@ Login login = (Login)session.getAttribute("login");
 		
 		<% 
 		} else { %>
-		<a href = "/Board-PRJ/board" style="color : aqua;"> 자유게시판</a>
+		<a href = "/Board-PRJ/board?act=list" style="color : aqua;"> 자유게시판</a>
 		<a href = "/Board-PRJ/login?act=logout" style="color : rgb(192, 192, 192);"> 로그아웃 </a>
 		<%
 		} 
