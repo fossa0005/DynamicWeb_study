@@ -11,13 +11,22 @@ Login login = (Login)session.getAttribute("login");
 <title>메인</title>
 </head>
 <body>
-	<%if (login == null) %>
-	<a href = "/Board-PRJ/login" style="color : aqua;"> 로그인 </a>
-	<a href = "/Board-PRJ/login" style="color : aqua;"> 회원가입 </a>
+	<h2>환영합니다!</h2>
+	<div>
+		<%
+		if (login == null) {
+		%>
+		<a href = "/Board-PRJ/login?act=loginForm" style="color : rgb(192, 192, 192);"> 로그인 </a>
+		<a href = "/Board-PRJ/login?act=loginForm" style="color : rgb(192, 192, 192);"> 회원가입 </a>
+		
+		<% 
+		} else { %>
+		<a href = "/Board-PRJ/board" style="color : aqua;"> 자유게시판</a>
+		<a href = "/Board-PRJ/login?act=logout" style="color : rgb(192, 192, 192);"> 로그아웃 </a>
+		<%
+		} 
+		%>
+	</div>
 	
-	<%else { %>
-	<a href = "/Board-PRJ/board" style="color : aqua;"> 자유게시판</a>
-	<a href = "/Board-PRJ/login" style="color : aqua;"> 로그아웃 </a>
-	<%} %>
 </body>
 </html>

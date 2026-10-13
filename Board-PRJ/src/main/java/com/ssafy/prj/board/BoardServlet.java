@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 
 @WebServlet("/board")
@@ -36,7 +37,10 @@ public class BoardServlet extends HttpServlet {
 	}
     
     public void list(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/list.jsp");
+    	BoardDao dao = new BoardDao();
+    	List<Board> boards = dao.selectBoard();
+    	
+    	RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/board?act=list");
     	
     	rd.forward(request, response);
     }

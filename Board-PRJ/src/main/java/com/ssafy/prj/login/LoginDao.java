@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 //싱글톤
+//DB접근객체
 public class LoginDao {
-	//아이디 : 비밀번호
-	private static Map<String, String> members = new HashMap<>();
+	private static Map<String, String> members = new HashMap<>(); //아이디 : 비밀번호
 	private static LoginDao instance;
 	
 	static {
@@ -24,6 +24,8 @@ public class LoginDao {
 		return instance;
 	}
 	
+	//전달받은 로그인 객체의 id가 DB에 존재하지 않거나
+	//id의 비밀번호가 다르면 null 반환
 	public Login selectLogin(Login param) {
 		String id = param.getId();
 		String password = param.getPassword();
@@ -32,7 +34,9 @@ public class LoginDao {
 		
 		Login login = new Login();
 		login.setId(id);
-		login.set
+		login.setPassword(password);
+		
+		return login;
 	}
 
 }
