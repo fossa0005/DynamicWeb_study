@@ -38,5 +38,14 @@ public class BoardDao {
 		board.setNo(++no);
 		boards.add(board);
 	}
+	
+	public void deleteBoard(int no) {
+		for(int i=0; i<boards.size(); i++) {
+			if(boards.get(i).getNo() == no) {
+				boards.remove(i);
+				return;
+			}
+		}
+	}
 
 }

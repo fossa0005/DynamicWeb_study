@@ -5,32 +5,34 @@
     pageEncoding="UTF-8"%>
     
 <%  
-BoardDao dao = new BoardDao();
-List<Board> boards = dao.selectBoard();
+List<Board> boards = (List<Board>)request.getAttribute("boards");
 %> 
     
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/Style.css">
 <title>자유게시판</title>
 <style type="text/css">
-	.board {
-		
-		width : 50%;
-		border-collapse: collapse;
-	}
-	
-	th, td {
-		padding : 10px;
-		text-align: center;
-		vertical-aligh: middle;
-	}
 </style>
 </head>
 <body>
-	<h2>자유게시판</h2>
-	<table class="board">
+	<header>
+		<div>
+			<h2>자유게시판</h2>
+		</div>
+		<div>
+			<nav>
+				<div>
+					<a class="logoutLink" href="${pageContext.request.contextPath}/login?act=logout">로그아웃</a>
+				</div>
+			</nav>
+		</div>
+	</header>
+	
+	
+	<table class="boardTable">
 		<tr>
 			<th>번호</th>
 			<th>제목</th>
@@ -39,11 +41,12 @@ List<Board> boards = dao.selectBoard();
 		</tr>
 		
 		<%
-		for (Board board: boards) { 
+		for (int i=boards.size()-1; i>=0; i--) {
+			Board board = boards.get(i);
 		%>
 		<tr>
 			<td><%= board.getNo() %></td>
-			<td><a href="/Board-PRJ/board?act=detail&no=<%=board.getNo()%>"><%=board.getTitle() %></a> </td>
+			<td style="text-align: left"><a class="titleLink" href="/Board-PRJ/board?act=detail&no=<%=board.getNo()%>"><%=board.getTitle() %></a> </td>
 			<td><%= board.getWriter() %></td>
 			<td><%= board.getViewCnt() %></td>
 		</tr>
@@ -52,7 +55,13 @@ List<Board> boards = dao.selectBoard();
 		%>
 	</table>
 	
-	<a href= "<%=request.getContextPath() %>/board?act=writeForm">게시글 작성</a>
-	<a href="${pageContext.request.contextPath}/login?act=logout" style="color : gray">로그아웃</a>
+	<div class="underMenu">
+		<div>
+		</div>
+		<div>
+			<a class= "writeLink" href= "<%=request.getContextPath() %>/board?act=writeForm">게시글 작성</a>
+		</div>
+	</div>
+	
 </body>
 </html>

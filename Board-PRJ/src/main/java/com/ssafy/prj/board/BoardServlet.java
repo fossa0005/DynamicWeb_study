@@ -28,7 +28,7 @@ public class BoardServlet extends HttpServlet {
     public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
     	String act = request.getParameter("act");
-    	
+    	System.out.println(act);
     	if(act == null) {
     		act = "list";
     	}
@@ -38,14 +38,15 @@ public class BoardServlet extends HttpServlet {
     	case "detail" : detail(request, response); break;
     	case "writeForm" : writeForm(request, response); break; //게시글작성 페이지
     	case "write" : write(request, response); break; //게시글 등록
+    	case "delete" : delete(request, response); break;
     	}
     	
 	}
     
     public void list(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	BoardDao dao = new BoardDao();
     	List<Board> boards = dao.selectBoard();
- 
+    	request.setAttribute("boards", boards);
+    	
     	RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/list.jsp");
     	
     	rd.forward(request, response);
@@ -66,10 +67,8 @@ public class BoardServlet extends HttpServlet {
     }
     
     public void write(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	BoardDao dao = new BoardDao();
     	HttpSession session = request.getSession();
     	Login login = (Login)session.getAttribute("login");
-    	
     	
     	//클라이언트가 전송한 값 -> parameter
     	String title = request.getParameter("title");
@@ -83,6 +82,16 @@ public class BoardServlet extends HttpServlet {
     	RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/list.jsp");
     	rd.forward(request, response);
     }
+    
+    public void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	System.out.println(12345);
+    	int no = Integer.parseInt(request.getParameter("no"));
+    	dao.deleteBoard(no);
+    	
+    	RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/list.jsp");
+    	rd.forward(request, response);
+    }
+    
     
     
 }
