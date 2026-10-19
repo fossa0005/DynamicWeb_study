@@ -41,7 +41,7 @@ public class LoginServlet extends HttpServlet {
  
     
     //로그인 검사
-    private void login(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void login(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
     	//jsp에서 전달받은 id pw입력값을 login객체로 만듦
     	String id = request.getParameter("id");
     	String password = request.getParameter("password");
@@ -54,17 +54,17 @@ public class LoginServlet extends HttpServlet {
     	login = loginDao.selectLogin(login);
     	
     	//실패
-    	if(login == null) { 
-    		response.sendRedirect(request.getContextPath() + "/login?act=loginForm");
-    	
+    	if(login == null) {
+    		request.setAttribute("login", "fail");
+    		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/login/login.jsp");
+    		rd.forward(request, response);
     	//성공
     	} else { 
+    		//request.setAttribute("login", login); //한 요청에서만 유지되므로 리다이렉트에서는 유지안됨 
     		HttpSession session = request.getSession();
     		session.setAttribute("login", login); //세션에 로그인객체 저장
-    		//request.setAttribute("login", login); //한 요청에서만 유지되므로 리다이렉트에서는 유지안됨 
     		response.sendRedirect(request.getContextPath() + "/main");
     	}
-    	
     }
     
     private void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

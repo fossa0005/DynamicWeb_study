@@ -1,12 +1,8 @@
 <%@page import="com.ssafy.prj.board.Board"%>
 <%@page import="java.util.List"%>
-<%@page import="com.ssafy.prj.board.BoardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%  
-List<Board> boards = (List<Board>)request.getAttribute("boards");
-%> 
     
 <!DOCTYPE html>
 <html>
@@ -41,6 +37,8 @@ List<Board> boards = (List<Board>)request.getAttribute("boards");
 		</tr>
 		
 		<%
+		List<Board> boards = (List<Board>)request.getAttribute("boards");
+		
 		for (int i=boards.size()-1; i>=0; i--) {
 			Board board = boards.get(i);
 		%>

@@ -18,7 +18,7 @@ import com.ssafy.prj.login.Login;
 @WebServlet("/board")
 public class BoardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    BoardDao dao = new BoardDao();  
+    static BoardDao dao = new BoardDao(); 
     
     public BoardServlet() {
         super();
@@ -79,6 +79,7 @@ public class BoardServlet extends HttpServlet {
     	Board board = new Board(0,title,content, writer, viewCnt);
     	dao.postBoard(board);
     	
+    	request.setAttribute("boards", dao.selectBoard());
     	RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/list.jsp");
     	rd.forward(request, response);
     }
@@ -88,6 +89,7 @@ public class BoardServlet extends HttpServlet {
     	int no = Integer.parseInt(request.getParameter("no"));
     	dao.deleteBoard(no);
     	
+    	request.setAttribute("boards", dao.selectBoard());
     	RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/list.jsp");
     	rd.forward(request, response);
     }

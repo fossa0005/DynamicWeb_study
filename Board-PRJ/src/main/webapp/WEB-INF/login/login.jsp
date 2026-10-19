@@ -23,5 +23,11 @@
 			<button type="submit">로그인</button>
 		</div>
 	</form>
+	
+	<script type="text/javascript">
+		<% if("fail".equals(request.getAttribute("login"))) { %>
+			alert("아이디 또는 비밀번호가 틀렸습니다");
+		<% } %>
+	</script>
 </body>
 </html>

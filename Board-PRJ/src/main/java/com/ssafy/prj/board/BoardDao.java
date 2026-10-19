@@ -16,7 +16,7 @@ public class BoardDao {
 	public static int getNo() {
 		return no;
 	}
-
+	
 	public static void setNo(int no) {
 		BoardDao.no = no;
 	}
