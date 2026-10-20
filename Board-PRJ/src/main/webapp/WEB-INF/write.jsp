@@ -4,20 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/Style.css">
 <title>게시글 작성</title>
-<style type="text/css">
-	 #content{
-	 	margin: 10px;
-	 	width : 500px;
-	 	height : 300px;
-	 }
-	 
-	 #title{
-	 	margin : 10px;
-	 	width : 500px;
-	 }
-
-</style>
 </head>
 
 <body>
@@ -25,10 +13,10 @@
 		<div>
 			<input type="hidden" name="act" value="write" >
 			<div>
-				<input type="text" id="title" name="title" placeholder="제목을 입력하세요">
+				<input type="text" class="titleForm" name="title" placeholder="제목을 입력하세요">
 			</div>
 			<div>
-				<input type="text" id="content" name="content" placeholder="내용을 입력하세요">
+				<input type="text" class="contentForm" name="content" placeholder="내용을 입력하세요">
 			</div>
 		</div>
 		<button type="submit">게시하기</button>

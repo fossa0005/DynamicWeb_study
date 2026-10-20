@@ -7,7 +7,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import jakarta.websocket.Session;
 
 import java.io.IOException;
 import java.util.List;
@@ -18,7 +17,7 @@ import com.ssafy.prj.login.Login;
 @WebServlet("/board")
 public class BoardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    static BoardDao dao = new BoardDao(); 
+    BoardService service = BoardServiceImpl.getInstance();
     
     public BoardServlet() {
         super();
@@ -39,12 +38,15 @@ public class BoardServlet extends HttpServlet {
     	case "writeForm" : writeForm(request, response); break; //게시글작성 페이지
     	case "write" : write(request, response); break; //게시글 등록
     	case "delete" : delete(request, response); break;
+    	case "updateForm" : updateForm(request, response); break;
+    	
     	}
     	
 	}
     
     public void list(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	List<Board> boards = dao.selectBoard();
+    	
+    	List<Board> boards = service.getBoardList();
     	request.setAttribute("boards", boards);
     	
     	RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/list.jsp");
@@ -53,8 +55,8 @@ public class BoardServlet extends HttpServlet {
     }
     
     public void detail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	Board board = dao.findByNo(Integer.parseInt(request.getParameter("no")));
-    	board.setViewCnt(board.getViewCnt()+1);
+    	Board board = service.getBoardDetail(Integer.parseInt(request.getParameter("no")));
+    	
     	//서버가 찾은 객체 -> attribute 
     	request.setAttribute("board", board);
     	RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/detail.jsp");
@@ -74,25 +76,30 @@ public class BoardServlet extends HttpServlet {
     	String title = request.getParameter("title");
     	String content = request.getParameter("content");
     	String writer = login.getId();
-    	int viewCnt = 0;
     	
-    	Board board = new Board(0,title,content, writer, viewCnt);
-    	dao.postBoard(board);
+    	service.writeBoard(title, content, writer);
     	
-    	request.setAttribute("boards", dao.selectBoard());
+    	request.setAttribute("boards", service.getBoardList());
     	RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/list.jsp");
     	rd.forward(request, response);
     }
     
     public void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	System.out.println(12345);
     	int no = Integer.parseInt(request.getParameter("no"));
-    	dao.deleteBoard(no);
+    	service.deleteBoard(no);
     	
-    	request.setAttribute("boards", dao.selectBoard());
+    	request.setAttribute("boards", service.getBoardList());
     	RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/list.jsp");
     	rd.forward(request, response);
     }
+    
+    public void updateForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/update.jsp");
+		Board board = service.findB
+		rd.forward(request, response);
+	}
+    
+    
     
     
     

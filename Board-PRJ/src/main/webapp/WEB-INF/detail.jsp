@@ -30,9 +30,11 @@ Board board = (Board)request.getAttribute("board");
 			<a href = "/Board-PRJ/board?act=list">목록으로</a>
 		</div>
 		<div>
-			<c:if test="${sessionScope.login.id == board.writer or sessionScope.login.id == 'admin'}"}> 
-				<a href = "/Board-PRJ/board?act=delete">수정</a>
-				|
+			<c:if test="${sessionScope.login.id == board.writer}"}> 
+				<a href = "/Board-PRJ/board?act=updateForm&no=${board.no}">수정</a>
+			</c:if>
+			|
+			<c:if test="${sessionScope.login.id == board.writer or sessionScope.login.id == 'admin'}"}>
 				<a href = "/Board-PRJ/board?act=delete&no=${board.no}" onclick="return confirm('이 게시글을 삭제할까요?')">삭제</a>
 				<!--  onclick: 클릭 시 자바스크립트 실행. 반환값이 false이면 a태그 실행하지않음 -->
 				<!--  confirm: 사용자 선택 따라 true 또는 false 반환 -->

@@ -37,6 +37,7 @@
 		</tr>
 		
 		<%
+		//직접 dao로 가져오면 안됨
 		List<Board> boards = (List<Board>)request.getAttribute("boards");
 		
 		for (int i=boards.size()-1; i>=0; i--) {

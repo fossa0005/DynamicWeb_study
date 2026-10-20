@@ -88,3 +88,14 @@ header nav{
 	text-decoration: none;
 	color: gray;
 }
+
+.contentForm {
+	 	margin: 10px;
+	 	width : 500px;
+	 	height : 300px;
+}
+	 
+.titleForm {
+	 	margin : 10px;
+	 	width : 500px;
+}
