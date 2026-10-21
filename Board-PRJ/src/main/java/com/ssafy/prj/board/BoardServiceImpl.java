@@ -33,6 +33,12 @@ public class BoardServiceImpl implements BoardService{
 	
 	//수정
 	@Override
+	public Board getBoardForEdit(int no) {
+		Board board = dao.findByNo(no);
+		return board;
+	}
+	
+	@Override
 	public void updateBord(String title, String content, String writer) {
 		Board board = new Board(0, title, content, writer, 0);
 		
@@ -51,6 +57,8 @@ public class BoardServiceImpl implements BoardService{
 	public void deleteBoard(int no) {
 		dao.deleteByNo(no);
 	}
+
+	
 
 	
 	

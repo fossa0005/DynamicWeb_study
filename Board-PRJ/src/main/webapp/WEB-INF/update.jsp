@@ -1,3 +1,4 @@
+<%@page import="com.ssafy.prj.board.Board"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,7 +15,8 @@
 			<input type="text" class="titleForm" name="title">
 		</div>
 		<div>
-			<input type="text" class="contentForm" name="content">
+			<textarea type="text" class="contentForm" name="content">
+			${board.content}
 		</div>
 	<button type="submit">수정하기</button>
 	</form>

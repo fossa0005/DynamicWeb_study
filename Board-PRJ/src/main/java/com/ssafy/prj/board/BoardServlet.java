@@ -95,7 +95,9 @@ public class BoardServlet extends HttpServlet {
     
     public void updateForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/update.jsp");
-		Board board = service.findB
+		int no = Integer.parseInt(request.getParameter("no"));
+		Board board = service.getBoardForEdit(no);
+		request.setAttribute("board", board);
 		rd.forward(request, response);
 	}
     

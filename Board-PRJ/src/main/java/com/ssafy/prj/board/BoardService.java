@@ -9,6 +9,8 @@ public interface BoardService {
 	
 	Board getBoardDetail(int no);
 	
+	Board getBoardForEdit(int no);
+	
 	void updateBord(String title, String content, String writer);
 	
 	void writeBoard(String title, String content, String writer);
