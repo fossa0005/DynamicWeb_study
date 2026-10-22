@@ -13,6 +13,7 @@
 		<input type="hidden" value="update">
 		<div>
 			<input type="text" class="titleForm" name="title">
+			${board.title}
 		</div>
 		<div>
 			<textarea type="text" class="contentForm" name="content">
