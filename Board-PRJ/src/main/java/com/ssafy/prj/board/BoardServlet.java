@@ -38,8 +38,8 @@ public class BoardServlet extends HttpServlet {
     	case "writeForm" : writeForm(request, response); break; //게시글작성 페이지
     	case "write" : write(request, response); break; //게시글 등록
     	case "delete" : delete(request, response); break;
-    	case "updateForm" : updateForm(request, response); break;
-    	
+    	case "updateForm" : updateForm(request, response); break; //수정 페이지
+    	case "update" : update(request, response); break;
     	}
     	
 	}
@@ -101,6 +101,21 @@ public class BoardServlet extends HttpServlet {
 		rd.forward(request, response);
 	}
     
+    public void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		Login login = (Login)session.getAttribute("login");
+		int no = Integer.parseInt(request.getParameter("no")); 
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		String writer  = login.getId();
+		
+		service.updateBord(no, title, content);
+		
+		List<Board> boards = service.getBoardList();
+		request.setAttribute("boards", boards);
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/list.jsp");
+		rd.forward(request, response);
+	}
     
     
     

@@ -9,15 +9,17 @@
 <title>게시글 수정</title>
 </head>
 <body>
+	<!--패러미터를 히든타입 인풋 태그로 전달할수도 있음-->
 	<form action="${pageContext.request.contextPath}/board">
-		<input type="hidden" value="update">
+		<input type="hidden" name="act" value="update">
+		<input type="hidden" name="no" value="${board.no}">
 		<div>
-			<input type="text" class="titleForm" name="title">
-			${board.title}
+			<input type="text" class="titleForm" name="title" value="${board.title}">
 		</div>
 		<div>
-			<textarea type="text" class="contentForm" name="content">
+			<textarea class="contentForm" name="content">
 			${board.content}
+			</textarea>
 		</div>
 	<button type="submit">수정하기</button>
 	</form>

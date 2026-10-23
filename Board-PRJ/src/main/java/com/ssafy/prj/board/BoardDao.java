@@ -49,6 +49,19 @@ public class BoardDao {
 		}
 	}
 	
+	public void updateByNo(int no, String title, String Content) {
+			int index = -1;
+		for(int i=0; i<boards.size(); i++) {
+			if(boards.get(i).getNo() == no) {
+				index = i;
+				break;
+			}
+		}
+		
+		boards.get(index).setTitle(title);
+		boards.get(index).setContent(Content);
+	}
+	
 	public void increaseViewCnt(int no) {
 		Board board = findByNo(no);
 		board.setViewCnt(board.getViewCnt() + 1);

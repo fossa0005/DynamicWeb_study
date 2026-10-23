@@ -11,7 +11,7 @@ public interface BoardService {
 	
 	Board getBoardForEdit(int no);
 	
-	void updateBord(String title, String content, String writer);
+	void updateBord(int no, String title, String content);
 	
 	void writeBoard(String title, String content, String writer);
 	

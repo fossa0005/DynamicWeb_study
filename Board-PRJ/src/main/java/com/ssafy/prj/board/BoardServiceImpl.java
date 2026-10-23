@@ -39,9 +39,8 @@ public class BoardServiceImpl implements BoardService{
 	}
 	
 	@Override
-	public void updateBord(String title, String content, String writer) {
-		Board board = new Board(0, title, content, writer, 0);
-		
+	public void updateBord(int no, String title, String content) {
+		dao.updateByNo(no, title, content);
 		
 	}
 	

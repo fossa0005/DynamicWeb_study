@@ -30,7 +30,7 @@ Board board = (Board)request.getAttribute("board");
 			<a href = "/Board-PRJ/board?act=list">목록으로</a>
 		</div>
 		<div>
-			<c:if test="${sessionScope.login.id == board.writer}"}> 
+			<c:if test="${sessionScope.login.id == board.writer}"> 
 				<a href = "/Board-PRJ/board?act=updateForm&no=${board.no}">수정</a>
 			</c:if>
 			|
