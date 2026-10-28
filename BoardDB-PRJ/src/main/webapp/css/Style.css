@@ -1,0 +1,102 @@
+@charset "UTF-8";
+
+
+
+body {
+	margin : 0px;
+	padding : 0px;
+
+}
+	
+header{
+	height : 100px;
+	/*vertical-align은 테이블에서 씀*/ 
+	align-items: center;
+	background: #333;
+	display : flex;
+	justify-content : space-around;
+	color : white;
+}
+
+header nav{
+	display: flex;
+	justify-content : space-between;
+	color : white;
+}
+
+
+.detailTable {
+    width: 60%;
+    margin: 30px auto;
+    border-collapse: collapse;
+    border-top: 2px solid #333;
+    border-bottom: 2px solid #333;
+    font-size: 15px;
+}
+
+.detailTable th, .detailTable td {
+    padding: 14px 18px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.detailTable #contentBox {
+	height: 250px;
+  		vertical-align: top;
+   	white-space: pre-wrap;
+   	line-height: 1.6;
+}
+
+.underMenu {
+	width : 60%;
+	margin: 30px auto;
+	display: flex;
+	justify-content: space-between;
+}
+
+.underMenu a {
+	text-decoration: underline;
+	color : blue;
+}
+
+.boardTable {
+	width : 60%;
+	margin : 30px auto;
+	border-collapse: collapse;
+	border-top: 2px solid #333; 
+}
+
+.boardTable th, td {
+	padding : 10px;
+	text-align: center;
+	vertical-align: middle;
+	border-bottom: 1px solid #ddd;
+}
+
+.logoutLink {
+	color: white;
+	text-decoration: none;
+}
+
+.titleLink {
+	text-decoration: none;
+	color : black;
+}
+
+.writeLink {
+	text-decoration: none;
+	color: gray;
+}
+
+.contentForm {
+	 	margin: 10px;
+	 	width : 500px;
+	 	height : 300px;
+	 	text-align: left;
+}
+	 
+.titleForm {
+	 	margin : 10px;
+	 	width : 500px;
+}
