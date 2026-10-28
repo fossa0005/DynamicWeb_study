@@ -3,8 +3,11 @@ package com.ssafy.prj.board;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ssafy.prj.util.DBUtil;
+
 //싱글톤
 public class BoardDao {
+	
 	private static BoardDao instance;
 	private static List<Board> boards = new ArrayList<>();
 	private static int no = 0; //PK

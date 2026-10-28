@@ -17,9 +17,7 @@
 			<input type="text" class="titleForm" name="title" value="${board.title}">
 		</div>
 		<div>
-			<textarea class="contentForm" name="content">
-			${board.content}
-			</textarea>
+			<textarea class="contentForm" name="content">${board.content}</textarea>
 		</div>
 	<button type="submit">수정하기</button>
 	</form>

@@ -3,8 +3,8 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    private static final String NICKNAME = "통신테스트";
-    private static final String HOST = "127.0.0.1";
+    private static final String NICKNAME = "이세현 1";
+    private static final String HOST = "70.12.60.120";
     private static final int PORT = 8747;
 
     private static Socket socket = null;

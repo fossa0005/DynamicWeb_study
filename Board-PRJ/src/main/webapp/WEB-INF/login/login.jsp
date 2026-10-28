@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그인</title>
 </head>
 <body>
 	<h2>로그인</h2>
@@ -18,6 +18,11 @@
 		<div>
 			<label>PASSWORD :</label>
 			<input type="password" name="password" />
+		</div>
+		<div style="color: gray; font-size:small;">
+			사용자1 : maria / 1111<br>
+			사용자2 : fossa / 1111<br>
+			관리자 : admin / 1111<br>
 		</div>
 		<div>
 			<button type="submit">로그인</button>

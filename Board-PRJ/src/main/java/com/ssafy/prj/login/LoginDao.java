@@ -4,14 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 //싱글톤
-//DB접근객체
 public class LoginDao {
 	private static Map<String, String> members = new HashMap<>(); //아이디 : 비밀번호
 	private static LoginDao instance;
 	
 	static {
-		members.put("maria", "1234");
-		members.put("admin", "1234");
+		members.put("maria", "1111");
+		members.put("admin", "1111");
+		members.put("fossa", "1111");
 	}
 	
 	private LoginDao() {}
