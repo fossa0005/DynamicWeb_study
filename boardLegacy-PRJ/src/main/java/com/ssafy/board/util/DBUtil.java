@@ -1,9 +1,11 @@
+package com.ssafy.board.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBUtil {
+	private static DBUtil dbUtil;
 	
 	static {
 		try {
@@ -14,7 +16,7 @@ public class DBUtil {
 	}
 	
 	private DBUtil() {}
-	private static DBUtil dbUtil;
+	
 	public static synchronized DBUtil getDBUtil() {
 		if (dbUtil == null) {
 			dbUtil = new DBUtil();
