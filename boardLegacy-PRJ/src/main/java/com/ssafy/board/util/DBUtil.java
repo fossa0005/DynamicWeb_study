@@ -4,9 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class DBUtil {
-	private static DBUtil dbUtil;
-	
 	static {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -15,27 +16,19 @@ public class DBUtil {
 		}
 	}
 	
-	private DBUtil() {}
-	
-	public static synchronized DBUtil getDBUtil() {
-		if (dbUtil == null) {
-			dbUtil = new DBUtil();
-		}
-		return dbUtil;
-	}
-	
-	private final String url = "jdbc:mysql:localhost:3306/ssafydb?serverTimezone=UTC";
+	private final String url = "jdbc:mysql://localhost:3306/BoardPRJ?serverTimezone=UTC";
 	private final String user = "ssafy";
 	private final String password = "ssafy";
 	
-	public Connection getConnection() {
-		Connection con = null;
+	public Connection getConnection() throws SQLException {
+		Connection conn = null;
 		try {
-			con = DriverManager.getConnection(url, user, password);
+			conn = DriverManager.getConnection(url, user, password);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw e;
 		}
-		return con;
+		return conn;
+		//세현아 에러뜨잖아. 틀렸어. 아아아아아아아아아아아 이세현 바보 아아아아아아아아
 	}
 }
 
