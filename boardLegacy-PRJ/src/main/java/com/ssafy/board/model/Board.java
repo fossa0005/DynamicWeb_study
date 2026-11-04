@@ -14,6 +14,7 @@ public class Board {
 		this.writer = writer;
 		this.regDate = regDate;
 		this.no = no;
+		this.viewCnt = viewCnt;
 	}
 
 	public String getTitle() {
@@ -57,11 +58,11 @@ public class Board {
 	}
 	
 	public int getViewCnt() {
-		return no;
+		return viewCnt;
 	}
 
 	public void setViewCnt(int no) {
-		this.no = no;
+		this.viewCnt = viewCnt;
 	}
 	
 }

@@ -30,5 +30,17 @@ public class DBUtil {
 		return conn;
 		//세현아 에러뜨잖아. 틀렸어. 아아아아아아아아아아아 이세현 바보 아아아아아아아아
 	}
+	
+	public void close(AutoCloseable...autoCloseables) {
+		for(AutoCloseable closeable : autoCloseables) {
+			if(closeable != null) {
+				try {
+					closeable.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
 }
 

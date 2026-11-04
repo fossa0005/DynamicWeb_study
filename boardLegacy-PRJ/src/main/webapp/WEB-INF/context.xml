@@ -8,8 +8,8 @@
            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
            http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <!-- @Controller가 선언된 클래스를 검색 -->
-    <context:component-scan base-package="com.ssafy.board.controller" />
+    <!--스캔범위 설정: @Controller가 선언된 클래스를 검색 -->
+    <context:component-scan base-package="com.ssafy.board" />
 
     <!-- @GetMapping 등 Spring MVC 어노테이션 활성화 -->
     <mvc:annotation-driven />

@@ -1,5 +1,6 @@
 package com.ssafy.board.service;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,22 +11,21 @@ import com.ssafy.board.model.Board;
 
 @Service //알아서 싱글톤
 public class BoardServiceImpl implements BoardService {
-	private static BoardService instance;
 	private final BoardDao dao; //DI
 	
 	//DI
-	private BoardServiceImpl(BoardDao dao){
+	//public 쓰는게 표준
+	public BoardServiceImpl(BoardDao dao){
 		this.dao = dao;
 	}
 	
 	@Override
-	public List<Board> getBoardList() {
-		List<Board> boards = new ArrayList<>();
-		return boards;
+	public List<Board> getBoardList() throws SQLException {
+		return dao.selectAll();
 	}
 
 	@Override
-	public Board getBoardDetail(int no) {
+	public Board getBoardDetail(int no) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
