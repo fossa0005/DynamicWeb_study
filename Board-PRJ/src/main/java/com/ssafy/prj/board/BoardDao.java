@@ -25,7 +25,7 @@ public class BoardDao {
 		return instance;
 	}
 
-	public List<Board> selectBoard() {
+	public List<Board> selectAll() {
 		return boards;
 	}
 	

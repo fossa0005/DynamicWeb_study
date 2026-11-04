@@ -19,7 +19,7 @@ public class BoardServiceImpl implements BoardService{
 	//리스트
 	@Override
 	public List<Board> getBoardList() {
-		List<Board> boards = dao.selectBoard();
+		List<Board> boards = dao.selectAll();
 		return boards;
 	}
 	
