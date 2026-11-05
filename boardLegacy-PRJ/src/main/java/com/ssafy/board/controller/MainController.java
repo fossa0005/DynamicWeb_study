@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.ssafy.board.model.Board;
 import com.ssafy.board.service.BoardService;
@@ -29,6 +30,12 @@ public class MainController {
 	public String board(Model model) throws SQLException {
 		List<Board> boards = service.getBoardList();
 		model.addAttribute("boards", boards); //jsp 전달 객체
-		return "board"; //board.jsp로 감
+		return "list"; //list.jsp로 감
+	}
+	
+	@GetMapping("/board/detail/{no}")
+	public String detail(@PathVariable int no, Model model) throws SQLException {
+		model.addAttribute("board", service.getBoardDetail(no));
+		return "detail";
 	}
 }

@@ -26,8 +26,8 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public Board getBoardDetail(int no) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		dao.increaseViewCnt(no);
+		return dao.findByNo(no);
 	}
 
 	@Override

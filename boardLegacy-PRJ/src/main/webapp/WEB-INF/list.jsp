@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/Style.css">
 <title>자유게시판</title>
 </head>
 <body>
@@ -33,7 +35,7 @@
 			<c:forEach var="board" items="${boards}">
 				<tr>
 					<td>${board.no}</td>
-					<td>${board.title}</td>
+					<td style="text-align: left"><a class="titleLink" href="${pageContext.request.contextPath}/board/detail/${board.no}">${board.title}</a></td>
 					<td>${board.writer}</td>
 					<td>${board.regDate}</td>
 					<td>${board.viewCnt}</td>

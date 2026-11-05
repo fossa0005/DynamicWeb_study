@@ -59,6 +59,63 @@ public class BoardDao {
 		return boards;
 	}
 	
+	public Board findByNo(int no) throws SQLException {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs  = null;
+		Board board = null;
+		
+		try {
+			conn = dbutil.getConnection();
+			String sql = """
+					select no, 
+						title, 
+						content, 
+						writer,
+						date_format(regDate, '%y/%m/%d %H:%m') as regDate,
+						viewCnt
+					from board
+					where no = ?
+						""";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(0, no);
+			rs  = pstmt.executeQuery(sql);
+			if(rs.next()) {
+				String title = rs.getString("title");
+				String content = rs.getString("content");
+				String writer = rs.getString("writer");
+				String regDate = rs.getString("regDate");
+				int viewCnt = rs.getInt("viewCnt");
+				
+				board = new Board(no, title, content, writer, regDate, viewCnt);
+			}	
+		} finally {
+			dbutil.close(rs, pstmt, conn);
+		}
+		
+		return board;	
+	}
+	
+	public void increaseViewCnt(int no) throws SQLException {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = dbutil.getConnection();
+			String sql = """
+					update board
+					set viewCnt = viewCnt+1
+					where no = ?
+					""";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(0, no);
+			rs = pstmt.executeQuery();
+		} finally {
+			dbutil.close(rs, pstmt, conn);
+		}
+	}
+	
 	
 	
 

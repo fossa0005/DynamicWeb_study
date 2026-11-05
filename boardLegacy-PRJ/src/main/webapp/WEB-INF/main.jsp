@@ -11,7 +11,6 @@
 		<h1>환영합니다</h1>
 	</div>
 	<div>
-		<a href="${pageContext.request.contextPath}/board">자유게시판</a>
+		<a href="${pageContext.request.contextPath}/board">자유게시판으로 이동</a>
 	</div>
-</body>
-</html>
+</body></html>

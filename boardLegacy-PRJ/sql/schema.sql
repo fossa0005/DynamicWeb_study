@@ -1,0 +1,14 @@
+CREATE DATABASE BoardPRJ;
+
+use BoardPRJ;
+
+CREATE TABLE Board (
+    no INT NOT NULL AUTO_INCREMENT,
+    title VARCHAR(200) NOT NULL,
+    content VARCHAR(200) NOT NULL,
+    writer VARCHAR(200) NOT NULL,
+    regDate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    viewCnt int NOT NULL DEFAULT 0,
+    PRIMARY KEY (no)
+);
+
