@@ -8,11 +8,14 @@
            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
            http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <!--스캔범위 설정: @Controller가 선언된 클래스를 검색 -->
+    <!--스캔범위 설정: @Controller가 선언된 클래스 검색 범위 -->
     <context:component-scan base-package="com.ssafy.board" />
 
-    <!-- @GetMapping 등 Spring MVC 어노테이션 활성화 -->
-    <mvc:annotation-driven />
+    <!-- 어노테이션 활성화 -->
+    <mvc:annotation-driven ></mvc:annotation-driven>
+
+    <!-- 정적 CSS 파일 위치 -->
+    <mvc:resources mapping="/css/**" location="/css/" />
 
     <!-- 컨트롤러의 문자열 반환값을 /WEB-INF/이름.JSP로 변환 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

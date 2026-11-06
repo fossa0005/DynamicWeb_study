@@ -34,7 +34,7 @@ public class MainController {
 	}
 	
 	@GetMapping("/board/detail/{no}")
-	public String detail(@PathVariable int no, Model model) throws SQLException {
+	public String detail(@PathVariable("no") int no, Model model) throws SQLException {
 		model.addAttribute("board", service.getBoardDetail(no));
 		return "detail";
 	}

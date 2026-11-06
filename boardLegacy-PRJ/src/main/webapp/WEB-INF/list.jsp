@@ -12,7 +12,7 @@
 <body>
 	<header>
 		<div>
-		<h2>자유게시판</h2>
+			<h2>자유게시판</h2>
 		</div>
 		<div>
 			<nav>

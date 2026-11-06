@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import org.springframework.stereotype.Repository;
 import com.ssafy.board.model.Board;
@@ -55,7 +56,8 @@ public class BoardDao {
 		} finally {
 			dbutil.close(rs, pstmt, conn);
 		}
-
+		
+		Collections.sort(boards, (o1, o2) -> o2.getNo() - o1.getNo());
 		return boards;
 	}
 	
@@ -78,8 +80,8 @@ public class BoardDao {
 					where no = ?
 						""";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(0, no);
-			rs  = pstmt.executeQuery(sql);
+			pstmt.setInt(1, no);
+			rs  = pstmt.executeQuery();
 			if(rs.next()) {
 				String title = rs.getString("title");
 				String content = rs.getString("content");
@@ -109,8 +111,8 @@ public class BoardDao {
 					where no = ?
 					""";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(0, no);
-			rs = pstmt.executeQuery();
+			pstmt.setInt(1, no);
+			pstmt.executeUpdate();
 		} finally {
 			dbutil.close(rs, pstmt, conn);
 		}
