@@ -15,7 +15,7 @@
 		</div>
 		<div>
 			<label>password: </label>
-			<input type="pw">
+			<input type="password" name="pw">
 		</div>
 		<div>
 			<button type="submit">로그인</button>

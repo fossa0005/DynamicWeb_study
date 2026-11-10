@@ -17,4 +17,10 @@ public class GlobalExceptionHandler {
 		model.addAttribute("message", "예기치 못한 상태");
 		return "error/error";
 	}
+	
+	@ExceptionHandler(Exception.class)
+	public String handleException(Model model) {
+		model.addAttribute("message", "알 수 없는 오류");
+		return "error/error";
+	}
 }

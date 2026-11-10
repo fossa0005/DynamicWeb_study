@@ -18,8 +18,6 @@ import jakarta.servlet.http.HttpSession;
 public class LoginController {
 	private final LoginService service;
 	
-	
-	@Autowired
 	public LoginController(LoginService service) {
 		this.service = service;
 	}
