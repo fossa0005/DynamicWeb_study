@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="/css/Style.css">
 <title>자유게시판</title>
 </head>
 <body>
@@ -15,13 +16,14 @@
 			<th>글쓴이</th>
 			<th>등록일</th>
 		</tr>
-		<c: forEach var="board" items="${boards}"></c:>
+		<c:forEach var="board" items="${boards}">
 		<tr>
 			<td>${board.no}</td>
 			<td style="text-align: left">${board.title}</td>
 			<td>${board.writer}</td>
 			<td>${board.regDate}</td>
 		</tr>
+		</c:forEach>
 	</table>
 	
 	<div class="underMenu">

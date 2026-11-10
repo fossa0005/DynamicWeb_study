@@ -43,8 +43,8 @@ public class LoginController {
 		
 		if("login_success".equals(result.getStatus())) {
 			session.setAttribute("loginMember", result.getMember());
-			return "redirect:/board";
-			//브라우저가 메인컨트롤러로 /board 새 요청
+			return "redirect:/list";
+			//브라우저가 컨트롤러로 /board 새 요청
 		}
 		
 		

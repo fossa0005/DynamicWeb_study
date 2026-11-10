@@ -8,7 +8,7 @@
 <title>로그인</title>
 </head>
 <body>
-	<form action="{pageContext.request.contextPath}/login">
+	<form action="${pageContext.request.contextPath}/login" method="post">
 		<div>
 			<label>id: </label>
 			<input type="text" name="id">
@@ -28,6 +28,7 @@
 	</form>
 
 	<script>
+	if login.
 		
 	</script>
 </body>

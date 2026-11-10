@@ -11,10 +11,16 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
-	
+
 	@ExceptionHandler(IllegalStateException.class)
 	public String handleIllegalStateException(Model model) {
 		model.addAttribute("message", "예기치 못한 상태");
+		return "error/error";
+	}
+	
+	@ExceptionHandler(SQLException.class)
+	public String handleSQLException(Model model) {
+		model.addAttribute("message", "DB 조회 중 오류 발생");
 		return "error/error";
 	}
 	
