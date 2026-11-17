@@ -28,8 +28,9 @@
 	</form>
 
 	<script>
-	if login.
-		
+		<c:if test="${errorMsg != null}">
+			alert("${errorMsg}");
+		</c:if>
 	</script>
 </body>
 </html>

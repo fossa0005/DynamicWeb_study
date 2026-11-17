@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="/css/Style.css">
 <title>자유게시판</title>
 </head>
+
 <body>
 	<table class="boardTable">
 		<tr>
