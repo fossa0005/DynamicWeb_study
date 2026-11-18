@@ -5,8 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
+import org.apache.coyote.ajp.AjpNio2Protocol;
 import org.springframework.stereotype.Component;
 
 import com.ssafy.board.model.Board;
@@ -56,6 +58,8 @@ public class BoardDao {
 		} finally {
 			dbutil.close(rs, pstmt, conn);
 		}
+		
+		Collections.sort(list, (o1, o2) -> o2.getNo() - o1.getNo());
 		
 		return list;
 	}

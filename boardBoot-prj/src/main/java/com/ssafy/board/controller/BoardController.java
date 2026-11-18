@@ -19,7 +19,7 @@ public class BoardController {
 	
 	@GetMapping("/list")
 	public String list(Model model) throws SQLException {
-		model.addAttribute("list", service.getBoardList());
+		model.addAttribute("boards", service.getBoardList());
 		return "list";
 	}
 	

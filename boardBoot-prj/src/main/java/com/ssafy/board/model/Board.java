@@ -47,6 +47,14 @@ public class Board {
 	public void setNo(int no) {
 		this.no = no;
 	}
+
+	public int getViewCnt() {
+		return viewCnt;
+	}
+
+	public void setViewCnt(int viewCnt) {
+		this.viewCnt = viewCnt;
+	}
 	
 	
 

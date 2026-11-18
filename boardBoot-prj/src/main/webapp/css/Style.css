@@ -62,6 +62,7 @@ header nav{
 	width : 60%;
 	margin : 30px auto;
 	border-collapse: collapse;
+	table-layout: fixed;
 	border-top: 2px solid #333; 
 }
 
