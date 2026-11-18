@@ -33,10 +33,11 @@ public class BoardDao {
 						b.title,
 						b.content,
 						m.id as writer,
-						b.Date_format(regDate, '') as regDate,
-						member
-					from board b, member m
-					left outer join on b.member_id = m.member_id
+						Date_format(b.reg_date, "%Y-%m-%d %H:%i:%s") as reg_date,
+						view_cnt
+					from board as b
+					left outer join member as m 
+					on b.member_id = m.member_id
 					""";
 			
 			conn = dbutil.getConnection();
@@ -47,11 +48,13 @@ public class BoardDao {
 				String title = rs.getString("title");
 				String content = rs.getString("content");
 				String writer = rs.getString("writer");
+				String regDate = rs.getString("reg_date");
+				int viewCnt = rs.getInt("view_cnt");
 				
-				list.add(new Board())
+				list.add(new Board(title, content, writer, regDate, no, viewCnt));
 			}
 		} finally {
-			
+			dbutil.close(rs, pstmt, conn);
 		}
 		
 		return list;

@@ -1,5 +1,6 @@
 package com.ssafy.board.service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -16,9 +17,14 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public List<Board> getBoardList() {
-		// TODO Auto-generated method stub
+	public List<Board> getBoardList() throws SQLException {
 		return dao.selectAll();
+	}
+
+	@Override
+	public Board getBoardDetail(int no) throws SQLException {
+		
+		return null;
 	}
 
 }
