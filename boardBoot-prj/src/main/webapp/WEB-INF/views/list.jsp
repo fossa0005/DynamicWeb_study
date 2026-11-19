@@ -12,11 +12,11 @@
 <body>
 	<table class="boardTable">
 		<colgroup>
-			<col style="width: 8%">
-			<col style="width: 44%">
-			<col style="width: 15%">
-			<col style="width: 25%">
-			<col style="width: 8%">
+			<col style="width: 10%">
+			<col style="width: 30%">
+			<col style="width: 20%">
+			<col style="width: 20%">
+			<col style="width: 20%">
 		</colgroup>
 		<tr>
 			<th>번호</th>
@@ -38,7 +38,7 @@
 	
 	<div class="underMenu">
 		<div>
-			<a href="${pageContext.request.contextPath}/writeForm">게시글작성</a>
+			<a href="${pageContext.request.contextPath}/writeForm">게시글 작성</a>
 		</div>
 	</div>
 

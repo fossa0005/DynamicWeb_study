@@ -64,4 +64,28 @@ public class BoardDao {
 		return list;
 	}
 	
+	public void insertBoard(String title, String content, int memberId) throws SQLException {
+		Connection conn = null;
+		PreparedStatement pstmt=null;
+		
+		try {
+			String sql = """
+						insert board(title, content, member_id)
+						values(?, ?, ?)
+					""";
+			conn = dbutil.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, title);
+			pstmt.setString(2, content);
+			pstmt.setInt(3, memberId);
+			
+			pstmt.executeUpdate();
+			
+		} finally {
+			dbutil.close(conn, pstmt);
+		}	
+	}
+	
+	
+	
 }

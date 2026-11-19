@@ -10,4 +10,8 @@ public interface BoardService {
 	
 	Board getBoardDetail(int no) throws SQLException;
 	
+	void writeBoard(String title, String content, int memberId) throws SQLException;
+	
+	
+	
 }
