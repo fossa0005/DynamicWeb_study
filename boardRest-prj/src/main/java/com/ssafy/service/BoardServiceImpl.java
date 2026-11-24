@@ -28,8 +28,14 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void updateBoard(int no, Board board) throws SQLException {
-		dao.update(no, board);
+	public boolean updateBoard(int no, Board board) throws SQLException {
+		dao.update(board);
+	}
+
+	@Override
+	public boolean deleteBoard(int no) throws SQLException {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 	

@@ -10,12 +10,12 @@ import com.ssafy.model.Board;
 
 public interface BoardService {
 
-	
 	public List<Board> getBoardList(String keyword) throws SQLException;
 	
 	public Board getBoardDetail(int no) throws SQLException;
 	
-	public void updateBoard(int no, Board board) throws SQLException;
+	//1행이 잘 수정되면 true 반환
+	public boolean updateBoard(int no, Board board) throws SQLException;
 	
-	
+	public boolean deleteBoard(int no) throws SQLException;
 }
