@@ -29,7 +29,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public boolean updateBoard(int no, Board board) throws SQLException {
-		dao.update(board);
+		return dao.update(board);
 	}
 
 	@Override

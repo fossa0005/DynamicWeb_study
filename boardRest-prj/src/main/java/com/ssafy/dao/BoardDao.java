@@ -109,27 +109,6 @@ public class BoardDao {
 		
 		try {
 			String sql = """
-					update board(view_cnt)
-					values(?)
-					where no = ?
-					""";
-			conn = dbutil.getConnection();
-			pstmt =conn.prepareStatement(sql);
-			pstmt.setInt(1, );
-			pstmt.setInt(2, no);
-			pstmt.executeUpdate();
-			
-		} finally {
-			dbutil.close(pstmt, conn);
-		}
-	}
-	
-	public void update(int no) throws SQLException {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		
-		try {
-			String sql = """
 					update board
 					set view_cnt = view_cnt + 1
 					where no = ?
@@ -137,8 +116,30 @@ public class BoardDao {
 			conn = dbutil.getConnection();
 			pstmt =conn.prepareStatement(sql);
 			pstmt.setInt(1, no);
-			
 			pstmt.executeUpdate();
+			
+		} finally {
+			dbutil.close(pstmt, conn);
+		}
+	}
+	
+	public int update(int no) throws SQLException {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = """
+					update board
+					set title = ?
+						content = ?
+						reg_date = current_timestamp
+					where no = ?
+					""";
+			conn = dbutil.getConnection();
+			pstmt =conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			
+			return pstmt.executeUpdate();
 			
 		} finally {
 			dbutil.close(conn, pstmt);
