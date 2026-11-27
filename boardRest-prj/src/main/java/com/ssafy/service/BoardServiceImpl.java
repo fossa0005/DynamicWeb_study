@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.ssafy.dao.BoardDao;
-import com.ssafy.model.Board;
+import com.ssafy.board.dao.BoardDao;
+import com.ssafy.board.model.Board;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -29,13 +29,13 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public boolean updateBoard(int no, Board board) throws SQLException {
-		return dao.update(board);
+		board.setNo(no);
+		return dao.update(board) == 1;
 	}
 
 	@Override
 	public boolean deleteBoard(int no) throws SQLException {
-		// TODO Auto-generated method stub
-		return false;
+		return dao.delete(no) == 1;
 	}
 	
 	

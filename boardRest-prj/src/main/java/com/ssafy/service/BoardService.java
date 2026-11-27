@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.ssafy.model.Board;
+import com.ssafy.board.model.Board;
 
 
 public interface BoardService {

@@ -1,4 +1,4 @@
-package com.ssafy.model;
+package com.ssafy.board.model;
 
 import org.springframework.stereotype.Component;
 

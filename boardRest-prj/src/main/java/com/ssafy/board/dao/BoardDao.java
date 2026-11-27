@@ -1,4 +1,4 @@
-package com.ssafy.dao;
+package com.ssafy.board.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,7 +9,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.ssafy.model.Board;
+import com.ssafy.board.model.Board;
 import com.ssafy.util.DBUtil;
 
 @Component
@@ -123,16 +123,39 @@ public class BoardDao {
 		}
 	}
 	
-	public int update(int no) throws SQLException {
+	public int update(Board board) throws SQLException {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		
 		try {
 			String sql = """
 					update board
-					set title = ?
-						content = ?
+					set title = ?,
+						content = ?,
 						reg_date = current_timestamp
+					where no = ?
+					""";
+			conn = dbutil.getConnection();
+			pstmt =conn.prepareStatement(sql);
+			pstmt.setString(1, board.getTitle());
+			pstmt.setString(2, board.getContent());
+			pstmt.setInt(3, board.getNo());
+			
+			return pstmt.executeUpdate();
+			
+		} finally {
+			dbutil.close(conn, pstmt);
+		}
+	}
+	
+	public int delete(int no) throws SQLException {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = """
+					delete
+					from board
 					where no = ?
 					""";
 			conn = dbutil.getConnection();

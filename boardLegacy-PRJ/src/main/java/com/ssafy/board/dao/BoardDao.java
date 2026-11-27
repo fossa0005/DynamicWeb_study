@@ -34,8 +34,8 @@ public class BoardDao {
 						title, 
 						content, 
 						writer,
-						date_format(regDate, '%y/%m/%d %H:%m') as regDate,
-						viewCnt 
+						date_format(b.reg_date, '%y-%m-%d %H:%m) as regDate,
+						view_cnt 
 					from board
 					""";
 			pstmt = conn.prepareStatement(sql);

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!-- 매퍼 인터페이스 경로 -->
+<mapper namespace = "com.ssafy.board.mapper.BoardMapper.java" >
+<!-- 반환된 테이블의 컬럼명과 resultType의 필드변수가 같은이름끼리 자동 맵핑됨 -->
+
+	<select id="select" resultType = "Board"> <!-- xml 반환형은 한 데이터행 기준으로 적으므로 여러행이 반환되어도 List로 적지않음 -->
+		select 
+			b.no,
+			b.title,
+			b.content,
+			m.id,
+			date_format(b.reg_date, "%Y-%m-%d %H:%i:%s") as reg_date,
+			b.view_cnt
+		from board b
+		left outer join member m on b.member_id = m.member_id
+		where title like concat('%', #{keyword}, '%')
+	</select>
+	
+	<!-- #{} : 패러미터 변수 이름 -->
+	<select id="findByNo" resultType="Board">
+		select 
+			b.no,
+			b.title,
+			b.content,
+			m.id as writer,
+			date_format(b.reg_date, "%Y-%m-%d %H:%i:%s") as reg_date,
+			b.view_cnt
+		from board b
+		left outer join member m on b.member_id = m.member_id
+		where b.no = #{no}
+	</select>
+	
+	<update id="increaseViewCnt" >
+		update board
+		set view_cnt = view_cnt + 1
+		where no = #{no}
+	
+	</update> 
+	
+	<!-- #{} : 패러미터 Board 객체의 멤버변수 -->
+	<update id="update">
+		update board
+		set 
+			title = #{board.title},
+			content = #{board.content}
+		where no = #{board.no}
+	</update>
+	
+	
+
+</mapper>
+
+

@@ -1,4 +1,4 @@
-package com.ssafy.controller;
+package com.ssafy.board.controller;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ssafy.model.Board;
+import com.ssafy.board.model.Board;
 import com.ssafy.service.BoardService;
 
 
